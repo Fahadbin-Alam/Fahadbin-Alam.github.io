@@ -1,5 +1,7 @@
 # Fahadbin-Alam.github.io
 
+Published by GitHub Pages from the `main` branch (Settings → Pages → Deploy from a branch → main, / root).
+
 The files for the GitHub user site `https://fahadbin-alam.github.io`. They live in the Muslimo repo under
 `user-site/` and are copied into the `Fahadbin-Alam.github.io` repository, which GitHub publishes from its
 `main` branch.
