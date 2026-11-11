@@ -2,13 +2,286 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Muslimo has moved</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://fahadbin-alam.github.io/muslimo/">
-<meta http-equiv="refresh" content="0; url=/muslimo/">
-<script>location.replace("/muslimo/" + location.search + location.hash);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fahadbin Alam | Software Engineering Co-op Candidate, Drexel CS</title>
+<meta name="description" content="Fahadbin Alam: Drexel University computer science student and U.S. Army veteran seeking a software engineering co-op. Projects in React Native, FastAPI and Luau.">
+<link rel="canonical" href="https://fahadbin-alam.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#14532d">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Fahadbin Alam | Software Engineering Co-op Candidate">
+<meta property="og:description" content="Drexel CS student and U.S. Army veteran (network administrator, 82nd Airborne). Seeking a software engineering co-op.">
+<meta property="og:url" content="https://fahadbin-alam.github.io/">
+<meta property="og:image" content="https://fahadbin-alam.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fahadbin Alam, Drexel CS student and Army veteran, seeking a software engineering co-op">
+<meta property="profile:first_name" content="Fahadbin">
+<meta property="profile:last_name" content="Alam">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fahadbin Alam | Software Engineering Co-op Candidate">
+<meta name="twitter:description" content="Drexel CS student and U.S. Army veteran seeking a software engineering co-op.">
+<meta name="twitter:image" content="https://fahadbin-alam.github.io/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Fahadbin Alam",
+  "url": "https://fahadbin-alam.github.io/",
+  "jobTitle": "Computer Science Student",
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": "Drexel University"},
+  "sameAs": [
+    "https://github.com/Fahadbin-Alam",
+    "https://www.linkedin.com/in/fahadbin-alam-/",
+    "https://linktr.ee/fahadbin.alam"
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --ink: #16211c;
+  --muted: #4b5a53;
+  --line: #dcdfd8;
+  --accent: #14532d;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3efe7;
+  --radius: 14px;
+  --max: 68rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1512;
+    --surface: #16201b;
+    --ink: #e9efeb;
+    --muted: #a9b8b0;
+    --line: #2a3832;
+    --accent: #6fcf97;
+    --accent-ink: #0b1a12;
+    --accent-soft: #1d3428;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 1.0625rem; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: var(--accent-ink); padding: .5rem 1rem; z-index: 10; }
+.skip:focus { left: 1rem; top: 1rem; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 5; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.75rem; }
+.brand { font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
+.site-nav ul { list-style: none; display: flex; gap: 1.25rem; margin: 0; padding: 0; align-items: center; }
+.site-nav a:not(.btn) { color: var(--ink); text-decoration: none; font-size: .95rem; display: inline-block; padding: .65rem 0; }
+.site-nav a:not(.btn):hover { text-decoration: underline; }
+@media (max-width: 40rem) { .site-nav .opt { display: none; } }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: .45rem; padding: .7rem 1.1rem; border-radius: 999px; font-weight: 600; font-size: .98rem; text-decoration: none; border: 2px solid var(--accent); min-height: 44px; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-ghost { color: var(--accent); background: transparent; }
+.btn-sm { padding: .35rem .85rem; font-size: .9rem; min-height: 36px; }
+.btn svg { width: 1.1em; height: 1.1em; flex: none; }
+
+/* Hero */
+.hero { padding: 2.5rem 0 1.5rem; }
+.status { display: inline-flex; align-items: center; gap: .5rem; background: var(--accent-soft); color: var(--ink); border-radius: 999px; padding: .35rem .9rem; font-weight: 600; font-size: .95rem; margin: 0 0 1.1rem; }
+.status::before { content: ""; width: .6rem; height: .6rem; border-radius: 50%; background: #22a35a; box-shadow: 0 0 0 3px rgba(34,163,90,.25); }
+h1 { font-size: clamp(2.25rem, 6vw, 3.5rem); line-height: 1.08; letter-spacing: -.025em; margin: 0 0 .75rem; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--muted); max-width: 44rem; margin: 0 0 1.5rem; }
+.lede strong { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: .75rem; margin: 0 0 1.75rem; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .75rem; list-style: none; padding: 0; margin: 0; }
+.facts li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: .9rem 1rem; font-size: .95rem; color: var(--muted); }
+.facts b { display: block; color: var(--ink); font-size: 1rem; }
+
+/* Sections */
+section { padding: 2rem 0; }
+h2 { font-size: 1.6rem; letter-spacing: -.015em; margin: 0 0 1.25rem; }
+h3 { font-size: 1.15rem; margin: 0 0 .35rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; display: flex; flex-direction: column; }
+.card p { margin: 0 0 1rem; color: var(--muted); }
+.card .links { margin-top: auto; display: flex; flex-wrap: wrap; gap: .5rem; }
+.kicker { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 0 0 .35rem; }
+.tags { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; margin: 0 0 1rem; }
+.tags li { font-size: .82rem; background: var(--accent-soft); color: var(--ink); padding: .15rem .6rem; border-radius: 999px; }
+
+.timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+.timeline li { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.25rem; }
+.timeline .meta { color: var(--muted); font-size: .95rem; margin: 0 0 .4rem; }
+.timeline p:last-child { margin-bottom: 0; }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1rem; }
+.plain { margin: 0; padding-left: 1.1rem; }
+.plain li { margin: .25rem 0; }
+
+.contact { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+.contact p { color: var(--muted); margin: 0 0 1rem; }
+footer { padding: 2rem 0 3rem; color: var(--muted); font-size: .9rem; }
+</style>
 </head>
 <body>
-<p>This page moved to <a href="/muslimo/">fahadbin-alam.github.io/muslimo/</a>.</p>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Fahadbin Alam</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li class="opt"><a href="#experience">Experience</a></li>
+        <li class="opt"><a href="#contact">Contact</a></li>
+        <!-- RESUME: once resume.pdf is committed to this repo, change this href (and the hero one) to "resume.pdf". -->
+        <li><a class="btn btn-primary btn-sm" href="https://www.linkedin.com/in/fahadbin-alam-/" rel="noopener">Résumé</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <p class="status">Seeking a software engineering co-op</p>
+      <h1 id="hero-title">Fahadbin Alam</h1>
+      <p class="lede">
+        <strong>Computer Science student at Drexel University</strong> and <strong>U.S. Army veteran</strong>.
+        I spent five years as a network administrator in the 82nd Airborne Division, and now I build full-stack
+        and mobile apps, including a React Native + FastAPI learning app and an educational Roblox game.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://www.linkedin.com/in/fahadbin-alam-/" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          Résumé &amp; LinkedIn
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/Fahadbin-Alam" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-ghost" href="#projects">See projects</a>
+      </div>
+      <ul class="facts" aria-label="Quick facts">
+        <li><b>B.S. Computer Science, Drexel</b>Minors in Mathematics, Data Science, and Electrical &amp; Computer Engineering</li>
+        <li><b>U.S. Army, 2020–2025</b>Sergeant, network administrator, 82nd Airborne Division. Honorable discharge.</li>
+        <li><b>CCNA · Security+ · Network+ · A+</b>Plus Microsoft Software &amp; Systems Academy (cloud application development)</li>
+      </ul>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <p class="kicker">Mobile + backend</p>
+          <h3>Muslimo</h3>
+          <p>A Duolingo-style app for learning about Islam through short, gamified lessons. Mobile client in
+            Expo / React Native with a FastAPI backend, built for app-store release: in-app update check,
+            account deletion, and privacy and terms pages.</p>
+          <ul class="tags" aria-label="Tech stack">
+            <li>React Native</li><li>Expo</li><li>FastAPI</li><li>Python</li>
+          </ul>
+          <div class="links">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/Fahadbin-Alam/Islamic-Learning-Duolingo-Style" rel="noopener">Code<span class="sr-only"> for Muslimo</span></a>
+          </div>
+        </article>
+        <article class="card">
+          <p class="kicker">Game development</p>
+          <h3>Path of the Sahabah</h3>
+          <p>An educational Roblox game about the lives of the Prophet's Companions, scripted in Luau.</p>
+          <ul class="tags" aria-label="Tech stack">
+            <li>Luau</li><li>Roblox Studio</li>
+          </ul>
+          <div class="links">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/Fahadbin-Alam/Roblox-Islamic-Game" rel="noopener">Code<span class="sr-only"> for Path of the Sahabah</span></a>
+          </div>
+        </article>
+        <article class="card">
+          <p class="kicker">Web</p>
+          <h3>OneWorld Relief website</h3>
+          <p>I founded OneWorld Relief, a nonprofit that supports orphans and funds water wells, and designed
+            and built its website myself.</p>
+          <ul class="tags" aria-label="Tech stack">
+            <li>Web</li>
+          </ul>
+          <div class="links">
+            <a class="btn btn-ghost btn-sm" href="https://github.com/Fahadbin-Alam/OneWorldRelief-Website" rel="noopener">Code<span class="sr-only"> for the OneWorld Relief website</span></a>
+          </div>
+        </article>
+      </div>
+      <p><a href="https://github.com/Fahadbin-Alam?tab=repositories" rel="noopener">All repositories on GitHub</a></p>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-title">
+      <h2 id="experience-title">Experience</h2>
+      <ol class="timeline">
+        <li>
+          <h3>Network Administrator / Communications Systems Specialist, U.S. Army</h3>
+          <p class="meta">82nd Airborne Division · Sergeant · 2020–2025 · Honorable discharge</p>
+          <p>Administered unit networks and communications systems.</p>
+        </li>
+        <li>
+          <h3>Founder, OneWorld Relief</h3>
+          <p class="meta">Nonprofit · Orphan support and water wells</p>
+          <p>Started the organization and built its website.</p>
+        </li>
+        <li>
+          <h3>Owner, short-term rental business</h3>
+          <p class="meta">North Carolina · Self-employed</p>
+          <p>Ran an Airbnb short-term rental business and wrote Python automation for its operations.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="creds-title">
+      <h2 id="creds-title">Education &amp; certifications</h2>
+      <div class="two">
+        <div class="card">
+          <h3>Education</h3>
+          <ul class="plain">
+            <li>B.S. Computer Science, Drexel University, Philadelphia</li>
+            <li>Minors: Mathematics, Data Science, Electrical &amp; Computer Engineering</li>
+            <li>Microsoft Software &amp; Systems Academy: cloud application development</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Certifications</h3>
+          <ul class="plain">
+            <li>Cisco CCNA</li>
+            <li>CompTIA Security+</li>
+            <li>CompTIA Network+</li>
+            <li>CompTIA A+</li>
+          </ul>
+        </div>
+      </div>
+      <p>Also the author of the book <cite>The Ivory</cite>.</p>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <div class="contact">
+        <p>I'm looking for a software engineering co-op. The fastest way to reach me, or to get my résumé, is a message on LinkedIn.</p>
+        <div class="cta" style="margin:0">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/fahadbin-alam-/" rel="noopener">Message me on LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com/Fahadbin-Alam" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="https://linktr.ee/fahadbin.alam" rel="noopener">All links</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Fahadbin Alam</div>
+</footer>
 </body>
 </html>
