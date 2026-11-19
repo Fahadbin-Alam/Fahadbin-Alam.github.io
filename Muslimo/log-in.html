@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in | Muslimo</title>
+  <meta name="description" content="Log in to Muslimo to see your streak, XP and dates.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth">
+  <div class="auth-top">
+    <a class="close" href="./" aria-label="Back to the home page">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3 L17 17 M17 3 L3 17" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+    </a>
+    <a class="btn ghost small" href="./#get-app">Get the app</a>
+  </div>
+
+  <main class="auth-box">
+    <!-- Log in with the same email and password as the app. The session token is only kept in memory,
+         used once to read the learner's numbers and then signed out again, so nothing stays on this device. -->
+    <section id="signin">
+      <h1>Log in</h1>
+      <form id="form" novalidate>
+        <div class="fields">
+          <label class="field">
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="Email" aria-label="Email" required>
+          </label>
+          <label class="field">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password" required>
+            <a class="inside" href="mailto:oneworldrelief.fma@gmail.com?subject=Reset%20my%20Muslimo%20password">Forgot?</a>
+          </label>
+        </div>
+        <p id="error" class="form-error" role="alert"></p>
+        <button id="submit" class="btn blue wide" type="submit">Log in</button>
+      </form>
+
+      <div class="or">OR</div>
+
+      <div class="app-hint">
+        <img src="icon.png" alt="" width="44" height="44">
+        <span><strong>Signed up with Google or Apple?</strong> Open the Muslimo app on your phone to see your progress.</span>
+      </div>
+
+      <p class="fine">By logging in to Muslimo, you agree to our <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+    </section>
+
+    <section id="me" hidden>
+      <div class="avatar" id="initials">M</div>
+      <h1 id="name">Assalamu alaikum!</h1>
+      <p class="handle" id="handle"></p>
+      <div class="stat-grid">
+        <div class="stat"><b id="streak" style="color:var(--flame)">0</b><span>Day streak</span></div>
+        <div class="stat"><b id="xp" style="color:#E09B00">0</b><span>Total XP</span></div>
+        <div class="stat"><b id="dates" style="color:var(--date)">0</b><span>Dates</span></div>
+      </div>
+      <p id="cheer" class="updated"></p>
+      <div class="stack">
+        <a class="btn wide" href="./#get-app">Keep learning in the app</a>
+        <button id="signout" class="btn ghost wide" type="button">Log out</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const API = "https://muslimo-api.onrender.com/api";
+    const $ = (id) => document.getElementById(id);
+    const form = $("form");
+    const button = $("submit");
+    const error = $("error");
+
+    function show(section) {
+      $("signin").hidden = section !== "signin";
+      $("me").hidden = section !== "me";
+      window.scrollTo(0, 0);
+    }
+
+    function number(value) {
+      return Number(value || 0).toLocaleString();
+    }
+
+    function initials(name) {
+      const parts = String(name || "").trim().split(/\s+/).filter(Boolean);
+      return (parts.slice(0, 2).map((part) => part[0]).join("") || "M").toUpperCase();
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const email = $("email").value.trim();
+      const password = $("password").value;
+      if (!email || !password) {
+        error.textContent = "Please type your email and password.";
+        return;
+      }
+      error.textContent = "";
+      button.disabled = true;
+      button.textContent = "Logging in…";
+      // The free server can take a little while to wake up.
+      const slow = setTimeout(() => { button.textContent = "Waking the server…"; }, 4000);
+      try {
+        const response = await fetch(`${API}/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+        if (response.status === 401) {
+          throw new Error("That email and password don't match. Please try again.");
+        }
+        if (response.status === 429) {
+          throw new Error("Too many tries. Please wait 15 minutes and try again.");
+        }
+        if (!response.ok) {
+          throw new Error("Something went wrong. Please try again in a minute.");
+        }
+        const session = await response.json();
+        // Sign this browser out again straight away: the page only needed the numbers.
+        if (session.token) {
+          fetch(`${API}/auth/logout`, { method: "POST", headers: { Authorization: `Bearer ${session.token}` } }).catch(() => {});
+        }
+        const user = session.user || {};
+        const name = user.displayName || "";
+        $("initials").textContent = initials(name);
+        $("name").textContent = name ? `Assalamu alaikum, ${name.split(/\s+/)[0]}!` : "Assalamu alaikum!";
+        $("handle").textContent = user.username ? `@${user.username}` : "";
+        $("streak").textContent = number(user.streakDays);
+        $("xp").textContent = number(user.totalXp);
+        $("dates").textContent = number(user.gems);
+        $("cheer").textContent = Number(user.streakDays) > 0
+          ? "MashaAllah! Keep your streak going with a lesson today."
+          : "Start a lesson today to light up your streak.";
+        form.reset();
+        show("me");
+      } catch (problem) {
+        error.textContent = problem instanceof TypeError
+          ? "Can't reach Muslimo right now. Check your internet and try again."
+          : problem.message;
+      } finally {
+        clearTimeout(slow);
+        button.disabled = false;
+        button.textContent = "Log in";
+      }
+    });
+
+    $("signout").addEventListener("click", () => show("signin"));
+  </script>
+</body>
+</html>
