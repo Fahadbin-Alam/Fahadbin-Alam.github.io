@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muslimo: Learn Islam Daily</title>
+  <meta name="description" content="Muslimo helps you learn Islam step by step with short, game-like lessons on the Quran, seerah, the Sahabah, hadith and manners. Every answer has a source.">
+  <meta name="theme-color" content="#21b573">
+  <meta property="og:title" content="Muslimo: Learn Islam Daily">
+  <meta property="og:description" content="Short, fun lessons on the Quran, seerah, the Sahabah, hadith and manners. Every answer has a source.">
+  <meta property="og:image" content="icon.png">
+  <link rel="icon" href="favicon.png">
+  <link rel="preload" href="fonts/BalooBhaijaan2_800ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+  <div class="bar">
+    <a class="brand" href="./" aria-current="page"><img src="icon.png" alt="" width="40" height="40"><span>muslimo</span></a>
+    <nav class="links" aria-label="Main">
+      <a class="hide-sm" href="./#help">Help</a>
+      <a class="hide-sm" href="privacy.html">Privacy</a>
+      <a href="log-in.html" class="btn ghost small">Log in</a>
+    </nav>
+  </div>
+</header>
+
+  <main>
+    <section class="hero">
+      <!-- Muslimo's camel, drawn to match the app icon. -->
+      <svg class="hero-art" viewBox="0 0 400 360" role="img" aria-label="Muslimo's camel standing in the desert next to a date palm">
+        <g class="sun-glow">
+          <circle cx="200" cy="170" r="140" fill="#FFF1C9"/>
+          <circle cx="200" cy="170" r="108" fill="#FFE08A"/>
+        </g>
+        <ellipse cx="200" cy="312" rx="196" ry="40" fill="#F7D48A"/>
+        <ellipse cx="200" cy="326" rx="150" ry="22" fill="#F0C46E"/>
+
+        <!-- date palm -->
+        <path d="M326 300 Q330 270 321 238" stroke="#C47A3A" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <rect x="300" y="296" width="54" height="8" rx="4" fill="#E8BE6E"/>
+        <g class="palm-leaves">
+          <path d="M321 238 Q290 214 262 228 Q292 222 321 238" fill="#178A56"/>
+          <path d="M321 238 Q300 200 270 196 Q300 214 321 238" fill="#21B573"/>
+          <path d="M321 238 Q340 198 372 200 Q344 214 321 238" fill="#21B573"/>
+          <path d="M321 238 Q354 216 380 232 Q350 226 321 238" fill="#178A56"/>
+          <path d="M321 238 Q318 204 330 186 Q326 214 321 238" fill="#2BC985"/>
+          <circle cx="314" cy="246" r="6" fill="#E8641E"/>
+          <circle cx="325" cy="248" r="6" fill="#F07A26"/>
+          <circle cx="319" cy="256" r="6" fill="#D85A18"/>
+        </g>
+
+        <g class="camel-bob">
+          <!-- tail -->
+          <path d="M96 200 Q74 214 80 252" stroke="#C98A44" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <ellipse cx="80" cy="258" rx="9" ry="11" fill="#A86E32"/>
+          <!-- back legs (far side, darker) -->
+          <rect x="128" y="236" width="20" height="84" rx="9" fill="#B97A3A"/>
+          <rect x="214" y="236" width="20" height="84" rx="9" fill="#B97A3A"/>
+          <ellipse cx="138" cy="322" rx="17" ry="8" fill="#93602A"/>
+          <ellipse cx="224" cy="322" rx="17" ry="8" fill="#93602A"/>
+          <!-- body -->
+          <ellipse cx="172" cy="214" rx="86" ry="44" fill="#E2A65A"/>
+          <path d="M122 190 Q148 128 196 178 Z" fill="#E2A65A"/>
+          <path d="M104 214 Q112 246 172 250 Q232 250 246 222" stroke="#CF9147" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <!-- saddle -->
+          <path d="M120 206 Q118 142 168 140 Q216 142 214 206 Z" fill="#21B573"/>
+          <rect x="118" y="196" width="98" height="14" rx="5" fill="#178A56"/>
+          <path d="M136 168 Q146 150 168 150" stroke="#8CE3BA" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <circle cx="132" cy="222" r="5" fill="#FFC21A"/>
+          <circle cx="154" cy="224" r="5" fill="#FFC21A"/>
+          <circle cx="176" cy="224" r="5" fill="#FFC21A"/>
+          <circle cx="198" cy="222" r="5" fill="#FFC21A"/>
+          <!-- front legs (near side) -->
+          <rect x="112" y="240" width="21" height="80" rx="9" fill="#C98A44"/>
+          <rect x="196" y="240" width="21" height="80" rx="9" fill="#C98A44"/>
+          <circle cx="122.5" cy="282" r="12" fill="#C98A44"/>
+          <circle cx="206.5" cy="282" r="12" fill="#C98A44"/>
+          <ellipse cx="122" cy="322" rx="17" ry="8" fill="#A86E32"/>
+          <ellipse cx="206" cy="322" rx="17" ry="8" fill="#A86E32"/>
+          <!-- neck and head -->
+          <g class="camel-head">
+            <path d="M232 206 Q262 186 262 132" stroke="#E2A65A" stroke-width="34" fill="none" stroke-linecap="round"/>
+            <path d="M250 200 Q272 178 270 140" stroke="#CF9147" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="252" cy="90" rx="10" ry="15" fill="#C98A44" transform="rotate(-20 252 90)"/>
+            <ellipse cx="272" cy="118" rx="34" ry="29" fill="#E2A65A"/>
+            <ellipse cx="300" cy="130" rx="25" ry="19" fill="#F3C98B"/>
+            <path d="M306 120 Q312 126 307 132" stroke="#B97A3A" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M284 140 Q296 150 312 142" stroke="#8A4A1C" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M258 96 Q270 88 284 94" stroke="#2A2A3A" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="272" cy="111" r="10" fill="#2A2A3A"/>
+            <circle cx="275.5" cy="107.5" r="3.5" fill="#fff"/>
+            <ellipse cx="262" cy="128" rx="9" ry="6" fill="#F7A3A0" opacity="0.8"/>
+          </g>
+        </g>
+
+        <!-- floating rewards -->
+        <g class="float-a">
+          <path d="M70 92 l8 16 18 3 -13 12 3 18 -16 -9 -16 9 3 -18 -13 -12 18 -3 Z" fill="#FFC21A" stroke="#E09B00" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+        <g class="float-b">
+          <rect x="324" y="58" width="44" height="34" rx="6" fill="#2FA8FF"/>
+          <rect x="324" y="86" width="44" height="8" rx="3" fill="#1683D1"/>
+          <path d="M346 60 V90" stroke="#fff" stroke-width="3" opacity="0.7"/>
+        </g>
+      </svg>
+
+      <div class="hero-copy">
+        <h1>Learn the Quran, Seerah and Sunnah a few minutes a day!</h1>
+        <div class="actions">
+          <a class="btn wide" href="#get-app">Get started</a>
+          <a class="btn ghost wide" href="log-in.html">I already have an account</a>
+        </div>
+        <p class="note">Free to start · For all ages · Android and iPhone</p>
+      </div>
+    </section>
+
+    <nav class="topics" aria-label="What you can learn">
+      <ul>
+        <li><span class="dot" style="background:#21B573"></span>Quran <span class="ar" lang="ar">القرآن</span></li>
+        <li><span class="dot" style="background:#2FA8FF"></span>Salah <span class="ar" lang="ar">الصلاة</span></li>
+        <li><span class="dot" style="background:#FF8A1F"></span>Prophets <span class="ar" lang="ar">الأنبياء</span></li>
+        <li><span class="dot" style="background:#B5541E"></span>Seerah <span class="ar" lang="ar">السيرة</span></li>
+        <li><span class="dot" style="background:#9B6BFF"></span>Sahabah <span class="ar" lang="ar">الصحابة</span></li>
+        <li><span class="dot" style="background:#FFC21A"></span>Hadith <span class="ar" lang="ar">الحديث</span></li>
+        <li><span class="dot" style="background:#FF4D5E"></span>Manners <span class="ar" lang="ar">الآداب</span></li>
+        <li><span class="dot" style="background:#13B5B1"></span>Duas <span class="ar" lang="ar">الأدعية</span></li>
+        <li><span class="dot" style="background:#5B7CFA"></span>Fasting <span class="ar" lang="ar">الصيام</span></li>
+        <li><span class="dot" style="background:#178A56"></span>Hajj <span class="ar" lang="ar">الحج</span></li>
+      </ul>
+    </nav>
+
+    <section class="feature">
+      <div class="feature-copy">
+        <h2>short lessons, big rewards</h2>
+        <p>Each lesson takes a few minutes and feels like a game. Tap, match and fill the gap, keep your streak alive, earn stars and dates, and watch your path grow.</p>
+      </div>
+      <div class="phone"><img src="img/app-path.webp" alt="The Muslimo learning path with finished lessons and the next lesson to start" width="480" height="1039" loading="lazy"></div>
+    </section>
+
+    <section class="feature flip">
+      <div class="feature-copy">
+        <h2>every answer has a source</h2>
+        <p>Lessons come from the Quran, Sahih al-Bukhari, Sahih Muslim and trusted tafsir. Tap a source and it opens on the exact line, so you always know where an answer comes from.</p>
+      </div>
+      <div class="phone"><img src="img/app-question.webp" alt="A true or false question about the intention for wudu" width="480" height="1039" loading="lazy"></div>
+    </section>
+
+    <section class="feature">
+      <div class="feature-copy">
+        <h2>stay motivated</h2>
+        <p>Daily streaks, friend streaks and friendly battles keep you coming back. Finish a lesson and the whole screen celebrates with you.</p>
+      </div>
+      <div class="phone"><img src="img/app-complete.webp" alt="Lesson complete screen showing XP earned, three stars and a 24 day streak" width="480" height="1039" loading="lazy"></div>
+    </section>
+
+    <section class="feature flip">
+      <div class="feature-copy">
+        <h2>for the whole family</h2>
+        <p>Kids, parents and grandparents can all learn together, with family challenge weeks and a friends list to cheer each other on. Muslimo speaks four languages.</p>
+        <div class="pill-row">
+          <span class="pill">English</span>
+          <span class="pill" lang="bn">বাংলা</span>
+          <span class="pill" lang="ur">اردو</span>
+          <span class="pill" lang="ar">العربية</span>
+        </div>
+      </div>
+      <div class="phone"><img src="img/app-topics.webp" alt="Choose a topic: Foundation, Prayer, Aqidah, Quran and Tafseer, Manners, Fasting, Zakat and Hajj" width="480" height="1039" loading="lazy"></div>
+    </section>
+
+    <section class="band" id="get-app">
+      <h2>learn anytime, anywhere</h2>
+      <p>Muslimo is out now on Google Play. The iPhone app is in final review with the App Store and coming soon.</p>
+      <div class="stores">
+        <!-- When the iPhone listing goes public, turn its box into a link like Google Play's and remove its "Soon" tag. -->
+        <a class="store" href="https://play.google.com/store/apps/details?id=com.islamiclearning.muslimo" target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 4 L27 16 L7 28 Z" fill="#21B573" stroke="#178A56" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          <div><small>Get it on</small><strong>Google Play</strong></div>
+        </a>
+        <div class="store">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="8" y="3" width="16" height="26" rx="4" fill="#2FA8FF" stroke="#1683D1" stroke-width="2.5"/><circle cx="16" cy="24" r="1.8" fill="#fff"/></svg>
+          <div><small>Download on the</small><strong>App Store</strong></div>
+          <span class="soon">Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="news" id="newsletter">
+      <h2>get Muslimo news</h2>
+      <p>A short email now and then with new lessons, Ramadan and Eid ideas, and app news. Free, and you can leave with one tap.</p>
+      <a class="btn" href="newsletter.html">Sign up for the newsletter</a>
+    </section>
+
+    <section class="help" id="help">
+      <h2>How can we help?</h2>
+      <p class="lead">Answers to the questions we hear most.</p>
+
+      <div class="contact">
+        <span class="mail-icon" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 30 30"><rect x="3" y="7" width="24" height="17" rx="4" fill="#fff"/><path d="M5 9 L15 17 L25 9" stroke="#1683D1" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <p><strong>Contact us</strong>Questions, a mistake in a lesson, or a problem with a purchase? Email <a href="mailto:oneworldrelief.fma@gmail.com">oneworldrelief.fma@gmail.com</a> with your phone model and what you were doing. We aim to reply within three working days.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Do I need an account?</summary>
+          <p>No. You can start learning straight away. An account saves your progress so you can keep it on a new phone.</p>
+        </details>
+        <details>
+          <summary>How do I restore premium on a new phone?</summary>
+          <p>Sign in with the same Apple ID or Google account you bought it with, open the shop in Muslimo and tap <strong>Restore purchases</strong>.</p>
+        </details>
+        <details>
+          <summary>How do I cancel premium?</summary>
+          <p>On iPhone, open Settings, tap your name, then Subscriptions. On Android, open Google Play, tap your profile, then Payments and subscriptions, then Subscriptions. Premium stays active until the end of the period you paid for.</p>
+        </details>
+        <details>
+          <summary>How do I get a refund?</summary>
+          <p>Purchases are handled by Apple or Google. Request a refund at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> or through <a href="https://support.google.com/googleplay/workflow/9813244">Google Play</a>.</p>
+        </details>
+        <details>
+          <summary>I found a mistake in a lesson.</summary>
+          <p>JazakAllahu khayran for telling us. Email the lesson name and what looks wrong, with a source if you have one, and we will review it.</p>
+        </details>
+        <details>
+          <summary>How do I turn off reminders?</summary>
+          <p>Change reminder settings in the app, or turn off notifications for Muslimo in your phone's settings.</p>
+        </details>
+        <details>
+          <summary>How do I delete my account?</summary>
+          <p>Follow the steps on the <a href="delete-account.html">account deletion page</a>.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+  <div class="foot">
+    <div>
+      <h3>Muslimo</h3>
+      <a href="./" aria-current="page">Home</a>
+      <a href="./#get-app">Get the app</a>
+      <a href="log-in.html">Log in</a>
+      <a href="newsletter.html">Newsletter</a>
+    </div>
+    <div>
+      <h3>Help</h3>
+      <a href="./#help">Common questions</a>
+      <a href="mailto:oneworldrelief.fma@gmail.com">Contact us</a>
+    </div>
+    <div>
+      <h3>Privacy and terms</h3>
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+      <a href="delete-account.html">Delete account</a>
+    </div>
+  </div>
+  <div class="foot-base">Muslimo: Learn Islam Daily · made by Fahad Alam</div>
+</footer>
+</body>
+</html>

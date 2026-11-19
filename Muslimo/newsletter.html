@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Newsletter | Muslimo</title>
+  <meta name="description" content="Get the Muslimo newsletter: new lessons, Ramadan and Eid ideas, and app news, now and then.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth">
+  <div class="auth-top">
+    <a class="close" href="./" aria-label="Back to the home page">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3 L17 17 M17 3 L3 17" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+    </a>
+    <a class="btn ghost small" href="./#get-app">Get the app</a>
+  </div>
+
+  <main class="auth-box">
+    <!-- Three states on one page: the sign-up form, "confirm" (from the link in the confirm email) and
+         "unsubscribe" (from the link in every email). Both links need one tap, so link checkers that open
+         emails can't confirm or unsubscribe anyone by themselves. -->
+    <section id="join">
+      <h1>Get Muslimo news</h1>
+      <p class="news-lead">A short email now and then with new lessons, Ramadan and Eid ideas, and app news. No spam, and you can leave with one tap.</p>
+      <form id="form" novalidate>
+        <div class="fields">
+          <label class="field">
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="Email" aria-label="Email" required>
+          </label>
+          <label class="field">
+            <select id="language" name="language" aria-label="Email language">
+              <option value="en">English</option>
+              <option value="bn">বাংলা (Bangla)</option>
+              <option value="ur">اردو (Urdu)</option>
+              <option value="ar">العربية (Arabic)</option>
+            </select>
+          </label>
+        </div>
+        <!-- People never see this box; bots fill it in and get ignored. -->
+        <input class="trap" id="website" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="tick">
+          <input id="age" type="checkbox">
+          <span>I am 13 or older. (Parents: sign up with your own email.)</span>
+        </label>
+        <p id="error" class="form-error" role="alert"></p>
+        <button id="submit" class="btn wide" type="submit">Sign me up</button>
+      </form>
+      <p class="fine">We only use your email for this newsletter. See our <a href="privacy.html">Privacy Policy</a>.</p>
+    </section>
+
+    <section id="check" hidden>
+      <div class="news-icon" aria-hidden="true">✉️</div>
+      <h1>Check your inbox</h1>
+      <p class="news-lead">We sent you an email. Tap <strong>Yes, sign me up</strong> in it to join. If you can't find it, look in Spam or Promotions.</p>
+      <a class="btn ghost wide" href="./">Back to the home page</a>
+    </section>
+
+    <section id="confirm" hidden>
+      <h1>One last tap</h1>
+      <p class="news-lead">Tap below to join the Muslimo newsletter.</p>
+      <p id="confirm-error" class="form-error" role="alert"></p>
+      <button id="confirm-button" class="btn wide" type="button">Yes, sign me up</button>
+    </section>
+
+    <section id="joined" hidden>
+      <div class="news-icon" aria-hidden="true">🎉</div>
+      <h1>You're in!</h1>
+      <p class="news-lead">JazakAllahu khayran. Our next email will come to you, in sha Allah.</p>
+      <a class="btn wide" href="https://play.google.com/store/apps/details?id=com.islamiclearning.muslimo" target="_blank" rel="noopener">Get it on Google Play</a>
+    </section>
+
+    <section id="leave" hidden>
+      <h1>Leave the newsletter?</h1>
+      <p class="news-lead">You won't get any more Muslimo newsletters. Your app account, if you have one, stays as it is.</p>
+      <p id="leave-error" class="form-error" role="alert"></p>
+      <button id="leave-button" class="btn blue wide" type="button">Unsubscribe</button>
+    </section>
+
+    <section id="left" hidden>
+      <h1>You're off the list</h1>
+      <p class="news-lead">You won't get any more newsletters from us. Changed your mind? You can <a href="newsletter.html" aria-current="page">sign up again</a> any time.</p>
+      <a class="btn ghost wide" href="./">Back to the home page</a>
+    </section>
+  </main>
+
+  <script>
+    const API = "https://muslimo-api.onrender.com/api";
+    const $ = (id) => document.getElementById(id);
+    const sections = ["join", "check", "confirm", "joined", "leave", "left"];
+    const params = new URLSearchParams(window.location.search);
+
+    function show(name) {
+      sections.forEach((id) => { $(id).hidden = id !== name; });
+      window.scrollTo(0, 0);
+    }
+
+    function problemText(problem, fallback) {
+      return problem instanceof TypeError ? "Can't reach Muslimo right now. Check your internet and try again." : (problem.message || fallback);
+    }
+
+    async function post(path, body, button, label) {
+      button.disabled = true;
+      // The free server can take a little while to wake up.
+      const slow = setTimeout(() => { button.textContent = "Waking the server…"; }, 4000);
+      try {
+        const response = await fetch(`${API}${path}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body)
+        });
+        if (response.status === 404) throw new Error("This link is old. Open the newest email from us, or sign up again.");
+        if (response.status === 429) throw new Error("Too many tries. Please wait a while and try again.");
+        if (response.status === 422) throw new Error("Please check your email and tick the box.");
+        if (!response.ok) throw new Error("Something went wrong. Please try again in a minute.");
+        return await response.json();
+      } finally {
+        clearTimeout(slow);
+        button.disabled = false;
+        button.textContent = label;
+      }
+    }
+
+    // Start in the language of the browser when it is one of ours.
+    const browserLanguage = (navigator.language || "en").slice(0, 2);
+    if (["bn", "ur", "ar"].includes(browserLanguage)) $("language").value = browserLanguage;
+
+    $("form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const email = $("email").value.trim();
+      const error = $("error");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        error.textContent = "Please type your email.";
+        return;
+      }
+      if (!$("age").checked) {
+        error.textContent = "Please tick the box to say you are 13 or older.";
+        return;
+      }
+      error.textContent = "";
+      try {
+        await post("/newsletter/subscribe", {
+          email,
+          language: $("language").value,
+          ageConfirmed: true,
+          website: $("website").value
+        }, $("submit"), "Sign me up");
+        show("check");
+      } catch (problem) {
+        error.textContent = problemText(problem, "Something went wrong.");
+      }
+    });
+
+    const confirmToken = params.get("confirm");
+    const leaveToken = params.get("unsubscribe");
+    if (confirmToken) {
+      show("confirm");
+      $("confirm-button").addEventListener("click", async () => {
+        try {
+          await post("/newsletter/confirm", { token: confirmToken }, $("confirm-button"), "Yes, sign me up");
+          show("joined");
+        } catch (problem) {
+          $("confirm-error").textContent = problemText(problem, "Something went wrong.");
+        }
+      });
+    } else if (leaveToken) {
+      show("leave");
+      $("leave-button").addEventListener("click", async () => {
+        try {
+          await post("/newsletter/unsubscribe", { token: leaveToken }, $("leave-button"), "Unsubscribe");
+          show("left");
+        } catch (problem) {
+          $("leave-error").textContent = problemText(problem, "Something went wrong.");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
